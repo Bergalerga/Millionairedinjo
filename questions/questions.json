@@ -1,11 +1,11 @@
 [
 	{
-		"question": "Hvem er bergalerga?",
+		"question": "Hvem er bergalerga sin ukjente far?",
 		"alternatives": [
-			"Berga",
-			"Lerga",
-			"Berg",
-			"Bergliot"
+			"Oil Money Steinar",
+			"Tale Plz Prestmo",
+			"Kradalby",
+			"Sebastian Skraastad"
 		],
 		"correct": 3
 	},
@@ -18,5 +18,15 @@
 			"arne"
 		],
 		"correct": 1
+	},
+	{
+		"question": "Eksamen neste?",
+		"alternatives": [
+			"ja",
+			"nei",
+			"kanskje",
+			"overhodet ikke"
+		],
+		"correct": 3
 	}
 ]

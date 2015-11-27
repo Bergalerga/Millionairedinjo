@@ -6,3 +6,92 @@
 	left: 0;
 	z-index: -5000;
 }
+
+html {
+	font-family: Helvetica, sans-serif;
+}
+
+h1, h3 {
+	margin: 0;
+}
+
+body {
+	color: white;
+	background-color: black;
+	width: 1024px;
+	height: 800px;
+	margin: 0 auto;
+}
+
+#question-container {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+
+#question-details {
+	display: block;
+	background-image: url('../img/main.png');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	text-align: center;
+}
+
+#question {
+	position: absolute;
+	top: 18%;
+	left: 15%;
+	width: 69%;
+	height: 30%;
+}
+
+#question > h1 {
+	font-size: 3em;
+	padding-top: 1.5em;
+	word-break: break-all;
+	text-transform: uppercase;
+}
+
+#question-1 > h3, #question-2 > h3, #question-3 > h3, #question-4 > h3 {
+	font-size: 1.5em;
+	line-height: 1.5em;
+	padding-top: 0.6em;
+	word-break: break-all;
+	text-transform: uppercase;
+}
+
+#question-1 {
+	position: absolute;
+	top: 66%;
+	left: 14%;
+	width: 29%;
+	height: 9%;
+}
+
+#question-2 {
+	position: absolute;
+	top: 66%;
+	left: 55%;
+	width: 29%;
+	height: 9%;
+}
+#question-3 {
+	position: absolute;
+	top: 79%;
+	left: 14%;
+	width: 29%;
+	height: 9%;
+}
+#question-4 {
+	position: absolute;
+	top: 79%;
+	left: 55%;
+	width: 29%;
+	height: 9%;
+}
