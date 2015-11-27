@@ -1,0 +1,22 @@
+[
+	{
+		"question": "Hvem er bergalerga?",
+		"alternatives": [
+			"Berga",
+			"Lerga",
+			"Berg",
+			"Bergliot"
+		],
+		"correct": 3
+	},
+	{
+		"question": "Hvem er hakloev?",
+		"alternatives": [
+			"hayken",
+			"håkon",
+			"per",
+			"arne"
+		],
+		"correct": 1
+	}
+]
