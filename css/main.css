@@ -37,6 +37,7 @@ body {
 	width: 800px;
 	height: 201px; /* Same as diagonal of :before, :after square */
 	margin: 0 auto;
+	background-color: #223e95;
 }
 
 #question::before {
@@ -54,6 +55,7 @@ body {
 	-ms-transform: rotate(135deg);
 	border-right: 2px solid white;
 	border-bottom: 2px solid white;
+	z-index: -1;
 }
 
 #question::after {
@@ -71,6 +73,7 @@ body {
 	-ms-transform: rotate(315deg);
 	border-right: 2px solid white;
 	border-bottom: 2px solid white;
+	z-index: -1;
 }
 
 #question > h1 {
@@ -115,6 +118,7 @@ body {
 	margin-top: 45px;
 	border-top: 2px solid white;
 	border-bottom: 2px solid white;
+	background-color: #223e95;
 }
 
 .alternative::before {
@@ -132,6 +136,7 @@ body {
 	-ms-transform: rotate(135deg);
 	border-right: 2px solid white;
 	border-bottom: 2px solid white;
+	z-index: -1;
 }
 
 .alternative:after {
@@ -149,6 +154,7 @@ body {
 	-ms-transform: rotate(315deg);
 	border-right: 2px solid	 white;
 	border-bottom: 2px solid white;
+	z-index: -1;
 }
 
 .alternative:nth-child(2n) {
