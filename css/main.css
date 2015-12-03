@@ -3,7 +3,6 @@
 	display: block;
 }
 
-
 html {
 	font-family: Helvetica, sans-serif;
 }
@@ -214,12 +213,10 @@ body {
 }
 
 /*-----------CALL--------------*/
-
 #call {
 	position: absolute;
 	top: 60px;
 	right: 210px;
 	width: 150px;
 	height: 150px;
-
 }
