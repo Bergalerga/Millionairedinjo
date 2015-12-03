@@ -3,7 +3,6 @@
 	display: block;
 }
 
-
 html {
 	font-family: Helvetica, sans-serif;
 }
@@ -100,6 +99,7 @@ body {
 }
 
 #help-50 {
+	cursor: pointer;
 	float: left;
 	width: 70px;
 	height: 70px;
@@ -113,6 +113,7 @@ body {
 }
 
 #help-call {
+	cursor: pointer;
 	float: left;
 	width: 70px;
 	height: 70px;
@@ -123,6 +124,7 @@ body {
 }
 
 #help-audience {
+	cursor: pointer;
 	float: left;
 	width: 70px;
 	height: 70px;
@@ -214,12 +216,10 @@ body {
 }
 
 /*-----------CALL--------------*/
-
 #call {
 	position: absolute;
 	top: 60px;
 	right: 210px;
 	width: 150px;
 	height: 150px;
-
 }
