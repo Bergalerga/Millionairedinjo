@@ -134,6 +134,11 @@ body {
 	margin-right: 30px
 }
 
+.left-text {
+	float: left;
+	display: inline-block;
+}
+
 /* QUESTION ALTERNATIVES */
 #alternatives-container {
 	display: block;
