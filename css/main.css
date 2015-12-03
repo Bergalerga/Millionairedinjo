@@ -15,80 +15,154 @@ h1, h3 {
 body {
 	color: white;
 	background-color: black;
-	width: 1024px;
-	height: 800px;
+	width: 100%;
+	height: 100%;
 	margin: 0 auto;
 }
 
+/* QUESTION ITSELF */
 #question-container {
 	display: block;
-	height: 100%;
-	width: 100%;
-}
-
-
-#question-details {
-	display: block;
-	background-image: url('../img/main.png');
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat;
-	position: relative;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	text-align: center;
+	margin-top: 100px;
 }
 
 #question {
+	position: relative;
+	/*
+	left: 50%;
+	transform: translateX(-50%);
+	*/
+	border-top: 2px solid white;
+	border-bottom: 2px solid white;
+	width: 800px;
+	height: 201px; /* Same as diagonal of :before, :after square */
+	margin: 0 auto;
+}
+
+#question::before {
+	content: " ";
 	position: absolute;
-	top: 18%;
-	left: 15%;
-	width: 69%;
-	height: 30%;
+	background-color: inherit;
+   	left: -72px; /* Half of height/width */
+	top: 28px;
+	width: 143px; /* Diagonal is 200.81px */
+	height: 143px;
+	transform: rotate(135deg);
+	-webkit-transform: rotate(135deg);
+	-moz-transform: rotate(135deg);
+	-o-transform: rotate(135deg);
+	-ms-transform: rotate(135deg);
+	border-right: 2px solid white;
+	border-bottom: 2px solid white;
+}
+
+#question::after {
+	content: " ";
+	position: absolute;
+	background-color: inherit;
+   	right: -72px; /* Half of height/width */
+	top: 28px;
+	width: 143px; /* Diagonal is 200.81px */
+	height: 143px;
+	transform: rotate(315deg);
+	-webkit-transform: rotate(315deg);
+	-moz-transform: rotate(315deg);
+	-o-transform: rotate(315deg);
+	-ms-transform: rotate(315deg);
+	border-right: 2px solid white;
+	border-bottom: 2px solid white;
 }
 
 #question > h1 {
 	font-size: 3em;
-	padding-top: 1.5em;
-	word-break: break-all;
-	text-transform: uppercase;
 }
+
+/* HELP */
+#help-container {
+	display: block;
+	margin-top: 50px;
+}
+
+/* This must be changed to a box of all helps */
+#help-container h1 {
+	margin: 0 auto;
+	width: 200px;
+}
+
+/* QUESTION ALTERNATIVES */
+#alternatives-container {
+	display: block;
+	margin-top: 50px;
+}
+
+#alternatives {
+	margin: 0 auto;
+	width: 1400px;
+	height: 400px;
+}
+
 
 #question-1 > h3, #question-2 > h3, #question-3 > h3, #question-4 > h3 {
-	font-size: 1.5em;
-	line-height: 1.5em;
-	padding-top: 0.6em;
-	word-break: break-all;
+	font-size: 2em;
+}
+
+.alternative {
+	position: relative;
+	display: inline-block;
+	float: left;
+	width: 45%;
+	height: 124px;
+	margin-top: 45px;
+	border-top: 2px solid white;
+	border-bottom: 2px solid white;
+}
+
+.alternative::before {
+	content: " ";
+	position: absolute;
+	background-color: inherit;
+   	left: -44px; /* Half of height/width */
+	top: 16px;
+	width: 89px; /* Diagonal is 202.23px */
+	height: 89px;
+	transform: rotate(135deg);
+	-webkit-transform: rotate(135deg);
+	-moz-transform: rotate(135deg);
+	-o-transform: rotate(135deg);
+	-ms-transform: rotate(135deg);
+	border-right: 2px solid white;
+	border-bottom: 2px solid white;
+}
+
+.alternative:after {
+	content: " ";
+	position: absolute;
+	background-color: inherit;
+	right: -44px; /* Half of height/width */
+	top: 16px;
+	width: 89px; /* Diagonal is 202.23px */
+	height: 89px;
+	transform: rotate(315deg);
+	-webkit-transform: rotate(315deg);
+	-moz-transform: rotate(315deg);
+	-o-transform: rotate(315deg);
+	-ms-transform: rotate(315deg);
+	border-right: 2px solid	 white;
+	border-bottom: 2px solid white;
+}
+
+.alternative:nth-child(2n) {
+	margin-left: 140px;
+}
+
+/* Used for centering of text in all boxes */
+.absolute-center-text {
+	word-wrap: break-word;
 	text-transform: uppercase;
-}
-
-#question-1 {
-	position: absolute;
-	top: 66%;
-	left: 14%;
-	width: 29%;
-	height: 9%;
-}
-
-#question-2 {
-	position: absolute;
-	top: 66%;
-	left: 55%;
-	width: 29%;
-	height: 9%;
-}
-#question-3 {
-	position: absolute;
-	top: 79%;
-	left: 14%;
-	width: 29%;
-	height: 9%;
-}
-#question-4 {
-	position: absolute;
-	top: 79%;
-	left: 55%;
-	width: 29%;
-	height: 9%;
+	text-align: center;
+	position:absolute;
+	width: 100%;
+    left:50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
