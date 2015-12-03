@@ -7,17 +7,17 @@
 			"Kradalby",
 			"Sebastian Skraastad"
 		],
-		"correct": 3
+		"correct": 1
 	},
 	{
 		"question": "Hvem er hakloev?",
 		"alternatives": [
 			"hayken",
 			"håkon",
-			"per",
-			"arne"
+			"per beate",
+			"arne merete"
 		],
-		"correct": 1
+		"correct": 2
 	},
 	{
 		"question": "Eksamen neste?",
@@ -27,6 +27,6 @@
 			"kanskje",
 			"overhodet ikke"
 		],
-		"correct": 3
+		"correct": 4
 	}
 ]

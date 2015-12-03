@@ -1,8 +1,9 @@
-var Millionare  = (function($) {
+var Millionaire  = (function($) {
 
     var questions = [];
     var nextQuestion = 0;
     var lastCorrectAnswer = -1;
+    var showNextQuestion = true;
     // 50/50 Specific
     var reducedAlternatives = false;
     // Audience Specific
@@ -71,7 +72,28 @@ var Millionare  = (function($) {
         });
 
         $(document).keypress(function(e) {
-            if (e.keyCode == 32) {
+            if (e.keyCode == 13) {
+                if (showNextQuestion) {
+                    resetQuestionStyle();
+                    populateNextQuestion(getQuestion(nextQuestion));
+                } else {
+                    changeQuestionStyle(lastCorrectAnswer, 'green');
+                }
+                showNextQuestion = !showNextQuestion
+            }
+            else if (e.keyCode == 65 || e.keyCode == 97) {
+                changeQuestionStyle(1);
+            }
+            else if (e.keyCode == 66 || e.keyCode == 98) {
+                changeQuestionStyle(2);
+            }
+            else if (e.keyCode == 67  || e.keyCode == 99) {
+                changeQuestionStyle(3);
+            }
+            else if (e.keyCode == 68 || e.keyCode == 100) {
+                changeQuestionStyle(4);
+            }
+            else if (e.keyCode == 32) {
                 if(calling) {
                     if (!running) {
                         sounds['beforeCallSound'].pause();
@@ -88,6 +110,9 @@ var Millionare  = (function($) {
                     }
                 }
             }
+            else {
+                resetQuestionStyle()
+            }
         });
     };
 
@@ -98,14 +123,14 @@ var Millionare  = (function($) {
         var interval = setInterval(function () {
             pos+=5;
             clock.css('right', pos);
-            if(pos >= 210) {
+            if(pos >= 250) {
                 clearInterval(interval);
             }
         },1)
     };
 
     var fadeOutClock = function () {
-        var pos = 210;
+        var pos = 250;
         var clock = $('#call');
         clock.css('right', pos);
         var interval = setInterval(function () {
@@ -129,6 +154,11 @@ var Millionare  = (function($) {
         return questions[id]
     };
 
+    var changeQuestionStyle = function(questionId) {
+        var color = (lastCorrectAnswer == questionId) ? 'green' : 'red';
+        $('#question-' + questionId).css('background-color', color);
+    };
+
     var resetQuestionStyle = function() {
         $('#alternatives').children().css('background-color', '#223e95');
     };
@@ -141,9 +171,19 @@ var Millionare  = (function($) {
         $("#alternative-" + alternatives[1].toString()).html("");
     };
 
+    var populateNextQuestion = function(question) {
+        lastCorrectAnswer = question.correct;
+        nextQuestion++;
+        $("#question h1").html(question.question);
+        $(question.alternatives).each(function(index, alternative) {
+            id = '#alternative-' + (index + 1);
+            $(id).html(alternative);
+        });
+    };
+
     return {
         init: function(url) {
-            console.log('Initiating Millionare.js');
+            console.log('Initiating Millionaire.js');
             bindListeners();
             activateSounds();
 
@@ -159,60 +199,10 @@ var Millionare  = (function($) {
                     console.error(err)
                 }
             });
-        },
-        populateNextQuestion: function() {
-            question = getQuestion(nextQuestion);
-            lastCorrectAnswer = question.correct;
-            nextQuestion++
-            $('#question h1').html(question.question);
-            $(question.alternatives).each(function(index, alternative) {
-                id = '#alternative-' + (index + 1);
-                $(id).html(alternative);
-            });
-        },
-        lastCorrectAnswer: function() {
-            return lastCorrectAnswer
-        },
-        sounds: sounds,
-        reset: resetQuestionStyle
+        }
     }
 })(jQuery);
 
-var showNextQuestion = true;
-
 $(document).ready(function() {
-    Millionare.init('questions/questions.json')
-
-    $(document).keypress(function(e) {
-        var lastCorrectAnswer = Millionare.lastCorrectAnswer()
-        var question;
-        if (e.keyCode == 13) {
-            if (showNextQuestion) {
-                Millionare.reset()
-                Millionare.populateNextQuestion()
-            } else {
-                question = $('#question-' + lastCorrectAnswer).css('background-color', 'green')
-            }
-            showNextQuestion = !showNextQuestion
-        }
-        else if (e.keyCode == 65 || e.keyCode == 97) {
-            question = $('#question-1');
-            (lastCorrectAnswer == 1) ? $(question).css('background-color', 'green') : $(question).css('background-color', 'red')
-        }
-        else if (e.keyCode == 66 || e.keyCode == 98) {
-            question = $('#question-2');
-            (lastCorrectAnswer == 2) ? $(question).css('background-color', 'green') : $(question).css('background-color', 'red')
-        }
-        else if (e.keyCode == 67  || e.keyCode == 99) {
-            question = $('#question-3');
-            (lastCorrectAnswer == 3) ? $(question).css('background-color', 'green') : $(question).css('background-color', 'red')
-        }
-        else if (e.keyCode == 68 || e.keyCode == 100) {
-            question = $('#question-4');
-            (lastCorrectAnswer == 4) ? $(question).css('background-color', 'green') : $(question).css('background-color', 'red')
-        }
-        else {
-            Millionare.reset();
-        }
-    });
+    Millionaire.init('questions/questions.json');
 });
