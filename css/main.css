@@ -212,3 +212,14 @@ body {
 	top: 50%;
 	transform: translate(-50%, -50%);
 }
+
+/*-----------CALL--------------*/
+
+#call {
+	position: absolute;
+	top: 60px;
+	right: 210px;
+	width: 150px;
+	height: 150px;
+
+}
