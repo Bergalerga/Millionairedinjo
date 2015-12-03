@@ -77,7 +77,7 @@ var Millionaire  = (function($) {
                     resetQuestionStyle();
                     populateNextQuestion(getQuestion(nextQuestion));
                 } else {
-                    changeQuestionStyle(lastCorrectAnswer, 'green');
+                    changeQuestionStyle(lastCorrectAnswer);
                 }
                 showNextQuestion = !showNextQuestion
             }
