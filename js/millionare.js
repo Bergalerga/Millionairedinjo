@@ -9,7 +9,7 @@ var Millionare  = (function($) {
     }
 
     var resetQuestionStyle = function() {
-        $('#questions').children().css('background-color', 'black');
+        $('#alternatives').children().css('background-color', '#223e95');
     }
 
     return {
@@ -34,7 +34,7 @@ var Millionare  = (function($) {
             $('#question h1').html(question.question)
             $(question.alternatives).each(function(index, alternative) {
                 console.log(0)
-                id = '#question-' + (index + 1) + ' h3'
+                id = '#alternative-' + (index + 1)
                 $(id).html(alternative);
             });
         },
@@ -66,11 +66,11 @@ $(document).ready(function() {
         else if (e.which == 65 || e.which == 97) {
             question = $('#question-1');
             (lastCorrectAnswer == 1) ? $(question).css('background-color', 'green') : $(question).css('background-color', 'red')
-        } 
+        }
         else if (e.which == 66 || e.which == 98) {
             question = $('#question-2');
             (lastCorrectAnswer == 2) ? $(question).css('background-color', 'green') : $(question).css('background-color', 'red')
-        } 
+        }
         else if (e.which == 67  || e.which == 99) {
             question = $('#question-3');
             (lastCorrectAnswer == 3) ? $(question).css('background-color', 'green') : $(question).css('background-color', 'red')
@@ -85,8 +85,8 @@ $(document).ready(function() {
             console.log(answs.indexOf(lastCorrectAnswer))
             answs.splice(answs.indexOf(lastCorrectAnswer), 1)
             answs.splice(answs[Math.floor(Math.random()*answs.length)], 1)
-            q1 = $("#question-" + answs[0].toString() + " h3").html("");
-            q2 = $("#question-" + answs[1].toString() + " h3").html("");
+            q1 = $("#alternative-" + answs[0].toString()).html("");
+            q2 = $("#alternative-" + answs[1].toString()).html("");
         }
         else {
             Millionare.reset();
