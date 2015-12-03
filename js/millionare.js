@@ -72,7 +72,7 @@ var Millionaire  = (function($) {
         });
 
         $(document).keypress(function(e) {
-            if (e.keyCode == 13) {
+            if (e.which == 13) {
                 if (showNextQuestion) {
                     resetQuestionStyle();
                     populateNextQuestion(getQuestion(nextQuestion));
@@ -81,19 +81,19 @@ var Millionaire  = (function($) {
                 }
                 showNextQuestion = !showNextQuestion
             }
-            else if (e.keyCode == 65 || e.keyCode == 97) {
+            else if (e.which == 65 || e.which == 97) {
                 changeQuestionStyle(1);
             }
-            else if (e.keyCode == 66 || e.keyCode == 98) {
+            else if (e.which == 66 || e.which == 98) {
                 changeQuestionStyle(2);
             }
-            else if (e.keyCode == 67  || e.keyCode == 99) {
+            else if (e.which == 67  || e.which == 99) {
                 changeQuestionStyle(3);
             }
-            else if (e.keyCode == 68 || e.keyCode == 100) {
+            else if (e.which == 68 || e.which == 100) {
                 changeQuestionStyle(4);
             }
-            else if (e.keyCode == 32) {
+            else if (e.which == 32) {
                 if(calling) {
                     if (!running) {
                         sounds['beforeCallSound'].pause();
