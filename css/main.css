@@ -99,6 +99,7 @@ body {
 }
 
 #help-50 {
+	cursor: pointer;
 	float: left;
 	width: 70px;
 	height: 70px;
@@ -112,6 +113,7 @@ body {
 }
 
 #help-call {
+	cursor: pointer;
 	float: left;
 	width: 70px;
 	height: 70px;
@@ -122,6 +124,7 @@ body {
 }
 
 #help-audience {
+	cursor: pointer;
 	float: left;
 	width: 70px;
 	height: 70px;

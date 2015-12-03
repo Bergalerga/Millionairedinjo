@@ -5,6 +5,8 @@ var Millionare  = (function($) {
     var lastCorrectAnswer = -1;
     // 50/50 Specific
     var reducedAlternatives = false;
+    // Audience Specific
+    var askedAudience = false;
     // Call Specific
     var hasCalled = false;
     var countdown;
@@ -16,7 +18,8 @@ var Millionare  = (function($) {
         'duringCallSound': new Audio('sounds/call_question.wav'),
         'beforeCallSound': new Audio('sounds/call_calling.wav'),
         'finishedCallSound': new Audio('sounds/telefonjoker_ende.mp3'),
-        'standardSound': new Audio('sounds/stufe_3.mp3')
+        'standardSound': new Audio('sounds/stufe_3.mp3'),
+        'fiftyFiftySound': new Audio('sounds/50_50.mp3')
     };
 
     var bindListeners = function() {
@@ -32,7 +35,7 @@ var Millionare  = (function($) {
                 seconds     : 30,
                 fontColor   : '#FFFFFF',
                 strokeStyle : '#FF9933',
-                fillStyle   : '#006699',
+                fillStyle   : '#223e95',
                 autostart   : false,
                 label       : false,
                 onComplete  : function () {
@@ -52,10 +55,19 @@ var Millionare  = (function($) {
 
         $('#help-50').on('click', function() {
             if (!reducedAlternatives) {
+                sounds['fiftyFiftySound'].play();
                 removeTwoAlternatives();
                 reducedAlternatives = !reducedAlternatives;
             }
             $(this).css('opacity', '0.3');
+        });
+
+        $('#help-audience').on('click', function() {
+           if (!askedAudience) {
+               sounds['fiftyFiftySound'].play();
+               $(this).css('opacity', '0.3');
+               askedAudience = !askedAudience;
+           }
         });
 
         $(document).keypress(function(e) {
