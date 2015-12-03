@@ -9,7 +9,7 @@ and thereafter access the website from `localhost:8000`. Keep in mind that the p
 
 ### Changing questions  
 
-To change the questions, edit the call to init with the path to your questions. Example:  
+To change the questions, edit the call to init with the path to your questions. This call is located at the end of the `millionare.js` file. Example:  
 
 ```javascript
 Millionaire.init('path/to/questions.json')
