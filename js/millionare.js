@@ -25,50 +25,57 @@ var Millionaire  = (function($) {
 
     var bindListeners = function() {
         $("#help-call").on("click", function () {
-            if (hasCalled) return;
-            $(this).css('opacity', '0.3');
+            if (hasCalled) {
+                $(this).css('opacity', '1');
+            } else {
+                $(this).css('opacity', '0.3');
 
-            $(document.body).append('<div id="call"></div>');
+                $(document.body).append('<div id="call"></div>');
 
-            var call = $("#call");
-            countdown = call.countdown360({
-                radius      : call.width(),
-                seconds     : 30,
-                fontColor   : '#FFFFFF',
-                strokeStyle : '#FF9933',
-                fillStyle   : '#223e95',
-                autostart   : false,
-                label       : false,
-                onComplete  : function () {
-                    fadeOutClock();
-                    calling = false;
-                    running = false;
-                }
-            });
+                var call = $("#call");
+                countdown = call.countdown360({
+                    radius: call.width(),
+                    seconds: 30,
+                    fontColor: '#FFFFFF',
+                    strokeStyle: '#FF9933',
+                    fillStyle: '#223e95',
+                    autostart: false,
+                    label: false,
+                    onComplete: function () {
+                        fadeOutClock();
+                        calling = false;
+                        running = false;
+                    }
+                });
 
-            sounds['beforeCallSound'].play();
-            sounds['standardSound'].pause();
+                sounds['beforeCallSound'].play();
+                sounds['standardSound'].pause();
 
-            calling = true;
-            fadeInClock();
-            hasCalled = true;
+                calling = true;
+                fadeInClock();
+            }
+            hasCalled = !hasCalled;
         });
 
         $('#help-50').on('click', function() {
             if (!reducedAlternatives) {
                 sounds['fiftyFiftySound'].play();
                 removeTwoAlternatives();
-                reducedAlternatives = !reducedAlternatives;
+                $(this).css('opacity', '0.3');
+            } else {
+                $(this).css('opacity', '1');
             }
-            $(this).css('opacity', '0.3');
+            reducedAlternatives = !reducedAlternatives;
         });
 
         $('#help-audience').on('click', function() {
            if (!askedAudience) {
                sounds['fiftyFiftySound'].play();
                $(this).css('opacity', '0.3');
-               askedAudience = !askedAudience;
+           } else {
+               $(this).css('opacity', '1');
            }
+           askedAudience = !askedAudience;
         });
 
         $(document).keypress(function(e) {
@@ -97,6 +104,7 @@ var Millionaire  = (function($) {
                 if(calling) {
                     if (!running) {
                         sounds['beforeCallSound'].pause();
+                        sounds['duringCallSound'].currentTime = 0;
                         sounds['duringCallSound'].play();
                         countdown.start();
                         running = true;
