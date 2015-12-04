@@ -91,6 +91,7 @@ var Millionaire  = (function($) {
         $(document).keypress(function(e) {
             if (e.which == 13) {
                 if (showNextQuestion) {
+                    clearAllBoxes();
                     resetQuestionStyle();
                     sounds['newQuestion'].play();
 
@@ -183,6 +184,14 @@ var Millionaire  = (function($) {
             else {
                 sounds['correctAnswer'].play();
             }
+        }
+    };
+
+    var clearAllBoxes = function() {
+        $('#question h1').html("");
+        for (var i = 1; i < 5; i++) {
+            id = '#alternative-' + i;
+            $(id).html("");
         }
     };
 
