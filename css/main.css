@@ -19,6 +19,8 @@ body {
 	margin: 0 auto;
 }
 
+
+
 /* QUESTION ITSELF */
 #question-container {
 	display: block;
@@ -137,6 +139,7 @@ body {
 .left-text {
 	float: left;
 	display: inline-block;
+	color: #FF9933;
 }
 
 /* QUESTION ALTERNATIVES */
