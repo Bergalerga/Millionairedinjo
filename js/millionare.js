@@ -20,7 +20,8 @@ var Millionaire  = (function($) {
         'beforeCallSound': new Audio('sounds/call_calling.wav'),
         'finishedCallSound': new Audio('sounds/telefonjoker_ende.mp3'),
         'standardSound': new Audio('sounds/stufe_3.mp3'),
-        'fiftyFiftySound': new Audio('sounds/50_50.mp3')
+        'fiftyFiftySound': new Audio('sounds/50_50.mp3'),
+        'newQuestion' : new Audio('sounds/wechsel_nach_stufe_2.mp3')
     };
 
     var bindListeners = function() {
@@ -70,12 +71,16 @@ var Millionaire  = (function($) {
                askedAudience = !askedAudience;
            }
         });
+        sounds['newQuestion'].addEventListener('ended', function(){
+            populateNextQuestion(getQuestion(nextQuestion));
+        });
 
         $(document).keypress(function(e) {
             if (e.which == 13) {
                 if (showNextQuestion) {
                     resetQuestionStyle();
-                    populateNextQuestion(getQuestion(nextQuestion));
+                    sounds['newQuestion'].play();
+
                 } else {
                     changeQuestionStyle(lastCorrectAnswer);
                 }
