@@ -22,6 +22,7 @@ var Millionaire  = (function($) {
         'standardSound': new Audio('sounds/stufe_3.mp3'),
         'fiftyFiftySound': new Audio('sounds/50_50.mp3'),
         'newQuestion' : new Audio('sounds/wechsel_nach_stufe_2.mp3'),
+        'bam' : new Audio('sounds/publikumsjoker_ende.mp3'),
         'gameOver' : new Audio('sounds/falsch_kein_gewinn.mp3'),
         'correctAnswer' : new Audio('sounds/richtig_stufe_3.mp3')
     };
@@ -74,7 +75,10 @@ var Millionaire  = (function($) {
            }
         });
         sounds['newQuestion'].addEventListener('ended', function(){
-            populateNextQuestion(getQuestion(nextQuestion));
+            sounds['bam'].play();
+            setTimeout(function() {
+                populateNextQuestion(getQuestion(nextQuestion));
+            }, 400);
         });
 
         $(document).keypress(function(e) {
