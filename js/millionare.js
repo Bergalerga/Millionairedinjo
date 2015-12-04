@@ -22,7 +22,8 @@ var Millionaire  = (function($) {
         'standardSound': new Audio('sounds/stufe_3.mp3'),
         'fiftyFiftySound': new Audio('sounds/50_50.mp3'),
         'newQuestion' : new Audio('sounds/wechsel_nach_stufe_2.mp3'),
-        'gameOver' : new Audio('sounds/falsch_kein_gewinn.mp3')
+        'gameOver' : new Audio('sounds/falsch_kein_gewinn.mp3'),
+        'correctAnswer' : new Audio('sounds/richtig_stufe_3.mp3')
     };
 
     var bindListeners = function() {
@@ -83,21 +84,21 @@ var Millionaire  = (function($) {
                     sounds['newQuestion'].play();
 
                 } else {
-                    changeQuestionStyle(lastCorrectAnswer);
+                    changeQuestionStyle(lastCorrectAnswer, false);
                 }
                 showNextQuestion = !showNextQuestion
             }
             else if (e.which == 65 || e.which == 97) {
-                changeQuestionStyle(1);
+                changeQuestionStyle(1, true);
             }
             else if (e.which == 66 || e.which == 98) {
-                changeQuestionStyle(2);
+                changeQuestionStyle(2, true);
             }
             else if (e.which == 67  || e.which == 99) {
-                changeQuestionStyle(3);
+                changeQuestionStyle(3, true);
             }
             else if (e.which == 68 || e.which == 100) {
-                changeQuestionStyle(4);
+                changeQuestionStyle(4, true);
             }
             else if (e.which == 32) {
                 if(calling) {
@@ -160,12 +161,17 @@ var Millionaire  = (function($) {
         return questions[id]
     };
 
-    var changeQuestionStyle = function(questionId) {
+    var changeQuestionStyle = function(questionId, playSounds) {
         var color = (lastCorrectAnswer == questionId) ? 'green' : 'red';
-        if (color == 'red') {
-            gameOver();
-        }
         $('#question-' + questionId).css('background-color', color);
+        if (playSounds) {
+            if (color == 'red') {
+                gameOver();
+            }
+            else {
+                sounds['correctAnswer'].play();
+            }
+        }
     };
 
     var resetQuestionStyle = function() {
