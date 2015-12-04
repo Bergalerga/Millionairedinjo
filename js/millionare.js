@@ -21,7 +21,8 @@ var Millionaire  = (function($) {
         'finishedCallSound': new Audio('sounds/telefonjoker_ende.mp3'),
         'standardSound': new Audio('sounds/stufe_3.mp3'),
         'fiftyFiftySound': new Audio('sounds/50_50.mp3'),
-        'newQuestion' : new Audio('sounds/wechsel_nach_stufe_2.mp3')
+        'newQuestion' : new Audio('sounds/wechsel_nach_stufe_2.mp3'),
+        'gameOver' : new Audio('sounds/falsch_kein_gewinn.mp3')
     };
 
     var bindListeners = function() {
@@ -161,6 +162,9 @@ var Millionaire  = (function($) {
 
     var changeQuestionStyle = function(questionId) {
         var color = (lastCorrectAnswer == questionId) ? 'green' : 'red';
+        if (color == 'red') {
+            gameOver();
+        }
         $('#question-' + questionId).css('background-color', color);
     };
 
@@ -186,6 +190,10 @@ var Millionaire  = (function($) {
         });
     };
 
+    var gameOver = function() {
+        sounds['standardSound'].pause();
+        sounds['gameOver'].play();
+    }
     return {
         init: function(url) {
             console.log('Initiating Millionaire.js');
