@@ -92,7 +92,9 @@ var Millionaire  = (function($) {
             if (e.which == 13) {
                 if (showNextQuestion) {
                     clearAllBoxes();
+                    $("#question h1").html("$" + getQuestion(nextQuestion).money);
                     resetQuestionStyle();
+
                     sounds['newQuestion'].play();
 
                 } else {

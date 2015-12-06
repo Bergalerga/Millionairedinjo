@@ -1,4 +1,4 @@
-[
+﻿[
 	{
 		"question": "Hvem er bergalerga sin ukjente far?",
 		"alternatives": [
@@ -7,7 +7,8 @@
 			"Kradalby",
 			"Sebastian Skraastad"
 		],
-		"correct": 1
+		"correct": 1,
+		"money": 100
 	},
 	{
 		"question": "Hvem er hakloev?",
@@ -17,7 +18,8 @@
 			"per beate",
 			"arne merete"
 		],
-		"correct": 2
+		"correct": 2,
+		"money": 200
 	},
 	{
 		"question": "Eksamen neste?",
@@ -27,6 +29,7 @@
 			"kanskje",
 			"overhodet ikke"
 		],
-		"correct": 4
+		"correct": 4,
+		"money": 300
 	}
 ]
