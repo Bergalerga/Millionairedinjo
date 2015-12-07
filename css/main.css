@@ -242,3 +242,28 @@ body {
 	width: 150px;
 	height: 150px;
 }
+.blink {
+	font-size: 150%;
+    animation-duration: 800ms;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    -webkit-animation:blink 800ms infinite; /* Safari and Chrome */
+
+}
+@keyframes blink {
+    from {
+        color:green;
+    }
+    to {
+        color:white;
+    }
+}
+@-webkit-keyframes blink {
+    from {
+        color:green;
+    }
+    to {
+        color:white;
+    }
+}
