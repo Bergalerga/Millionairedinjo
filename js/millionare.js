@@ -191,6 +191,7 @@ var Millionaire  = (function($) {
 
     var clearAllBoxes = function() {
         $('#question h1').html("");
+        $('#money h3').html("$MONEYZ");
         for (var i = 1; i < 5; i++) {
             id = '#alternative-' + i;
             $(id).html("");
@@ -213,6 +214,7 @@ var Millionaire  = (function($) {
         lastCorrectAnswer = question.correct;
         nextQuestion++;
         $("#question h1").html(question.question);
+        $("#money h3").html("$" + question.money)
         $(question.alternatives).each(function(index, alternative) {
             id = '#alternative-' + (index + 1);
             $(id).html(alternative);

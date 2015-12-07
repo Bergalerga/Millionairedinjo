@@ -87,9 +87,19 @@ body {
 	margin-top: 50px;
 }
 
+#money {
+    float: left;
+    font-size: 2em;
+    height: 70px;
+    line-height: 70px;
+    width: 370px;
+    text-align: right;
+    margin-right: 30px;
+}
+
 /* This must be changed to a box of all helps */
 #help-items {
-	width: 330px;
+	width: 800px;
 	margin: 0 auto;
 	text-align: center;
 	clear: both;
@@ -107,7 +117,8 @@ body {
 	height: 70px;
 	border: 2px solid #223e95;
 	border-radius: 50px;
-	margin-right: 30px
+	margin-right: 30px;
+    margin-left: 30px;
 }
 
 #help-50 p {
@@ -133,7 +144,7 @@ body {
 	border: 2px solid #223e95;
 	border-radius: 50px;
 	color: white;
-	margin-right: 30px
+    margin-right: 60px;
 }
 
 .left-text {
