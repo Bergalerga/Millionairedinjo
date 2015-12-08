@@ -8,7 +8,7 @@
 			"Sebastian Skraastad"
 		],
 		"correct": 1,
-		"money": 100
+		"money": 1000
 	},
 	{
 		"question": "Hvem er hakloev?",
@@ -19,7 +19,7 @@
 			"arne merete"
 		],
 		"correct": 2,
-		"money": 200
+		"money": 2000
 	},
 	{
 		"question": "Eksamen neste?",
@@ -30,6 +30,6 @@
 			"overhodet ikke"
 		],
 		"correct": 4,
-		"money": 300
+		"money": 3000
 	}
 ]
