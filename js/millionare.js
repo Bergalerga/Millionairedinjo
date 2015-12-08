@@ -114,7 +114,7 @@ var Millionaire  = (function($) {
             if (e.which == 13) {
                 if (showNextQuestion) {
                     clearAllBoxes();
-                    $("#question h1").html("$" + getQuestion(nextQuestion).money);
+                    $("#money").html("$" + getQuestion(nextQuestion).money);
                     resetQuestionStyle();
                     sounds['newQuestion'].play();
 
@@ -162,6 +162,7 @@ var Millionaire  = (function($) {
                 resetQuestionStyle();
                 sounds['standardSound'].pause();
                 sounds['outro'].play();
+                $("#money").html("");
                 $('#question h1').addClass("blink");
                 $("#question > h1").css("font-size", "6em");
                 $('#question h1').html('$' + getQuestion(lastCorrectAnswer - 1).money);
@@ -249,7 +250,7 @@ var Millionaire  = (function($) {
         lastCorrectAnswer = question.correct;
         nextQuestion++;
         $("#question h1").html(question.question);
-        $("#money h3").html("$" + question.money)
+        //$("#money").html("$" + question.money)
         $(question.alternatives).each(function(index, alternative) {
             id = '#alternative-' + (index + 1);
             $(id).html(alternative);
