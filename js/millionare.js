@@ -90,24 +90,27 @@ var Millionaire  = (function($) {
             }, 400);
         });
         sounds['gameOver'].addEventListener('ended', function() {
-            clearAllBoxes();
-            resetQuestionStyle();
-            moneyReached = getQuestion(lastCorrectAnswer - 1).money;
-            sounds['outro'].play();
-            $("#question > h1").css("font-size", "6em");
-            $('#question h1').addClass("blink");
-            if (moneyReached >= 100000) {
-                $('#question h1').html("$100000");
-            }
-            else if (moneyReached >= 10000) {
-                $('#question h1').html("$10000");
-            }
-            else if (moneyReached >= 1000) {
-                $('#question h1').html("$1000");
-            }
-            else {
-                $('#question h1').html("$0");
-            }
+            setTimeout(function() {
+                clearAllBoxes();
+                resetQuestionStyle();
+                moneyReached = getQuestion(lastCorrectAnswer - 1).money;
+                sounds['outro'].play();
+                $("#question > h1").css("font-size", "6em");
+                $('#question h1').addClass("blink");
+                $('#money').html("");
+                if (moneyReached >= 100000) {
+                    $('#question h1').html("$100000");
+                }
+                else if (moneyReached >= 10000) {
+                    $('#question h1').html("$10000");
+                }
+                else if (moneyReached >= 1000) {
+                    $('#question h1').html("$1000");
+                }
+                else {
+                    $('#question h1').html("$0");
+                }
+            }, 3000);
         });
 
         $(document).keypress(function(e) {
@@ -217,6 +220,7 @@ var Millionaire  = (function($) {
         $('#question-' + questionId).css('background-color', color);
         if (playSounds) {
             if (color == 'red') {
+                $('#question-' + lastCorrectAnswer).addClass("blink");
                 gameOver();
             }
             else {
@@ -227,7 +231,7 @@ var Millionaire  = (function($) {
 
     var clearAllBoxes = function() {
         $('#question h1').html("");
-        $('#money h3').html("$MONEYZ");
+        //$('#money h3').html("$MONEYZ");
         for (var i = 1; i < 5; i++) {
             id = '#alternative-' + i;
             $(id).html("");

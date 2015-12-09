@@ -256,7 +256,7 @@ body {
 	height: 150px;
 }
 .blink {
-	font-size: 150%;
+	/*font-size: 150%;*/
     animation-duration: 800ms;
     animation-name: blink;
     animation-iteration-count: infinite;
