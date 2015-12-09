@@ -24,7 +24,8 @@ var Millionaire  = (function($) {
         'newQuestion' : new Audio('sounds/wechsel_nach_stufe_2.mp3'),
         'bam' : new Audio('sounds/publikumsjoker_ende.mp3'),
         'gameOver' : new Audio('sounds/falsch_kein_gewinn.mp3'),
-        'correctAnswer' : new Audio('sounds/richtig_stufe_3.mp3')
+        'correctAnswer' : new Audio('sounds/richtig_stufe_3.mp3'),
+        'outro' : new Audio('sounds/outro.mp3')
     };
 
     var bindListeners = function() {
@@ -85,16 +86,39 @@ var Millionaire  = (function($) {
             sounds['bam'].play();
             setTimeout(function() {
                 populateNextQuestion(getQuestion(nextQuestion));
+                sounds['standardSound'].play();
             }, 400);
+        });
+        sounds['gameOver'].addEventListener('ended', function() {
+            setTimeout(function() {
+                clearAllBoxes();
+                resetQuestionStyle();
+                moneyReached = getQuestion(lastCorrectAnswer - 1).money;
+                sounds['outro'].play();
+                $("#question > h1").css("font-size", "6em");
+                $('#question h1').addClass("blink");
+                $('#money').html("");
+                if (moneyReached >= 100000) {
+                    $('#question h1').html("$100000");
+                }
+                else if (moneyReached >= 10000) {
+                    $('#question h1').html("$10000");
+                }
+                else if (moneyReached >= 1000) {
+                    $('#question h1').html("$1000");
+                }
+                else {
+                    $('#question h1').html("$0");
+                }
+            }, 3000);
         });
 
         $(document).keypress(function(e) {
             if (e.which == 13) {
                 if (showNextQuestion) {
                     clearAllBoxes();
-                    $("#question h1").html("$" + getQuestion(nextQuestion).money);
+                    $("#money").html("$" + getQuestion(nextQuestion).money);
                     resetQuestionStyle();
-
                     sounds['newQuestion'].play();
 
                 } else {
@@ -104,15 +128,19 @@ var Millionaire  = (function($) {
             }
             else if (e.which == 65 || e.which == 97) {
                 changeQuestionStyle(1, true);
+                sounds['standardSound'].pause();
             }
             else if (e.which == 66 || e.which == 98) {
                 changeQuestionStyle(2, true);
+                sounds['standardSound'].pause();
             }
             else if (e.which == 67  || e.which == 99) {
                 changeQuestionStyle(3, true);
+                sounds['standardSound'].pause();
             }
             else if (e.which == 68 || e.which == 100) {
                 changeQuestionStyle(4, true);
+                sounds['standardSound'].pause();
             }
             else if (e.which == 32) {
                 if(calling) {
@@ -132,8 +160,20 @@ var Millionaire  = (function($) {
                     }
                 }
             }
+            else if (e.which == 102 || e.which == 70) {
+                clearAllBoxes();
+                resetQuestionStyle();
+                sounds['standardSound'].pause();
+                sounds['outro'].play();
+                $("#money").html("");
+                $('#question h1').addClass("blink");
+                $("#question > h1").css("font-size", "6em");
+                $('#question h1').html('$' + getQuestion(lastCorrectAnswer - 1).money);
+
+            }
             else {
                 resetQuestionStyle()
+
             }
         });
     };
@@ -169,7 +209,6 @@ var Millionaire  = (function($) {
     var activateSounds = function() {
         sounds['beforeCallSound'].loop = true;
         sounds['standardSound'].loop = true;
-        sounds['standardSound'].autoplay = true;
     };
 
     var getQuestion = function(id) {
@@ -181,6 +220,7 @@ var Millionaire  = (function($) {
         $('#question-' + questionId).css('background-color', color);
         if (playSounds) {
             if (color == 'red') {
+                $('#question-' + lastCorrectAnswer).addClass("blink");
                 gameOver();
             }
             else {
@@ -191,7 +231,7 @@ var Millionaire  = (function($) {
 
     var clearAllBoxes = function() {
         $('#question h1').html("");
-        $('#money h3').html("$MONEYZ");
+        //$('#money h3').html("$MONEYZ");
         for (var i = 1; i < 5; i++) {
             id = '#alternative-' + i;
             $(id).html("");
@@ -214,7 +254,7 @@ var Millionaire  = (function($) {
         lastCorrectAnswer = question.correct;
         nextQuestion++;
         $("#question h1").html(question.question);
-        $("#money h3").html("$" + question.money)
+        //$("#money").html("$" + question.money)
         $(question.alternatives).each(function(index, alternative) {
             id = '#alternative-' + (index + 1);
             $(id).html(alternative);
